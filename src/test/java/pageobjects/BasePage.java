@@ -1,39 +1,44 @@
 package pageobjects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import tests.BaseTest;
 
 public class BasePage {
 
 
-    public WebDriver webDriver;
-    public WebDriverWait webDriverWait;
+    public WebDriver driver;
+    public WebDriverWait driverWait;
 
 
-    public BasePage (WebDriver webDriver){
-        this.webDriver=webDriver;
-        webDriverWait= new WebDriverWait(webDriver,15);
+    public BasePage (WebDriver driver){
+        this.driver = driver;
+        driverWait = new WebDriverWait(driver,15);
     }
 
     public void waitUntillVisible(By elementBy){
-        webDriverWait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(elementBy));
+        driverWait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(elementBy));
     }
 
     public void click (By elementBy){
         waitUntillVisible(elementBy);
-        webDriver.findElement(elementBy).click();
+        driver.findElement(elementBy).click();
     }
 
     public void sendKeys (By elementBy, String text){
         waitUntillVisible(elementBy);
-        webDriver.findElement(elementBy).sendKeys(text);
+        driver.findElement(elementBy).sendKeys(text);
     }
 
     public String readText(By elementBy){
         waitUntillVisible(elementBy);
-        return webDriver.findElement(elementBy).getText();
+        return driver.findElement(elementBy).getText();
     }
+
+    public void pageDown(){
+        driver.findElement(By.cssSelector("body")).sendKeys(Keys.PAGE_DOWN);
+    }
+
 }
