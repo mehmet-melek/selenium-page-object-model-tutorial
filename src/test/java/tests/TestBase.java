@@ -7,24 +7,24 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class TestBase {
-
+    
     public WebDriver driver;
-
+    
     @BeforeAll
-    public static void setupConfiguration(){
-        System.setProperty("webdriver.chrome.driver","/opt/chromedriver");
+    public static void setupConfiguration() {
+        System.setProperty("webdriver.chrome.driver", "/opt/chromedriver");
     }
-
+    
     @BeforeEach
-    public void setupDriver(){
+    public void setupDriver() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-
+        
     }
-
+    
     @AfterEach
-    public void teardown(){
+    public void teardown() {
         driver.quit();
     }
-
+    
 }

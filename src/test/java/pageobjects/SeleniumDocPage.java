@@ -8,32 +8,30 @@ public class SeleniumDocPage extends BasePage {
     public SeleniumDocPage(WebDriver driver) {
         super(driver);
     }
-
-    By guidlineslink = By.xpath("//a[contains(text(),'Guidelines')]");
-    By pomLink = By.xpath("//a[contains(text(),'Page object models')]");
+    
+    By guidlineslink    = By.xpath("//a[contains(text(),'Guidelines')]");
+    By pomLink          = By.xpath("//a[contains(text(),'Page object models')]");
     By lastUpdateButton = By.xpath("//a[@class='highlight' and contains(text(),'Modify:')]");
-
-
-    public SeleniumDocPage goToGuidelines(){
-        waitUntillVisible(guidlineslink);
+    
+    
+    public SeleniumDocPage goToGuidelines() {
+        waitUntilVisible(guidlineslink);
         click(guidlineslink);
         return this;
     }
-
-    public SeleniumDocPage goToPom(){
-        waitUntillVisible(pomLink);
+    
+    public SeleniumDocPage goToPom() {
+        waitUntilVisible(pomLink);
         click(pomLink);
         return this;
     }
-
-    public GithubLoginPage goToGitHubForLastUpdate(){
+    
+    public GithubLoginPage goToGitHubForLastUpdate() {
         pageDown();
-        waitUntillVisible(lastUpdateButton);
+        waitUntilVisible(lastUpdateButton);
         click(lastUpdateButton);
         return new GithubLoginPage(driver);
     }
-
-
-
-
+    
+    
 }
